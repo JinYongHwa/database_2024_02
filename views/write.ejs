@@ -8,10 +8,10 @@
 
 <body>
     <div class="container">
-        <form action="" class="form">
-            <input type="text" class="form-control" placeholder="글제목">
-            <input type="text" class="form-control mt-2" placeholder="작성자">
-            <textarea class="form-control mt-2" placeholder="글내용"></textarea>
+        <form action="/board/write" method="post" class="form">
+            <input name="title" type="text" class="form-control" placeholder="글제목">
+            <input name="writer" type="text" class="form-control mt-2" placeholder="작성자">
+            <textarea name="body" class="form-control mt-2" placeholder="글내용"></textarea>
             <div class="text-center mt-2">
                 <button class="btn btn-primary">글쓰기</button>
             </div>
