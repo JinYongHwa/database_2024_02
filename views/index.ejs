@@ -12,39 +12,45 @@
 </head>
 
 <body>
+    <div class="container">
 
-    <table class="table">
-        <tr>
-            <td>글번호</td>
-            <td>제목</td>
-            <td>작성자</td>
-            <td>조회수</td>
-            <td>작성일</td>
-        </tr>
-        <% boards.forEach(board=>{%>
-            <tr onclick="moveView(<%=board.no%>)">
-                <td>
-                    <%=board.no%>
-                </td>
-                <td>
-                    <%=board.title%>
-                </td>
-                <td>
-                    <%=board.writer%>
-                </td>
-                <td>
-                    <%=board.hits%>
-                </td>
-                <td>
-                    <%=board.writeDate%>
-                </td>
+        <table class="table">
+            <tr>
+                <td>글번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>조회수</td>
+                <td>작성일</td>
             </tr>
-            <%})%>
-    </table>
+            <% boards.forEach(board=>{%>
+                <tr onclick="moveView(<%=board.no%>)">
+                    <td class="text-center">
+                        <%=board.no%>
+                    </td>
+                    <td>
+                        <%=board.title%>
+                    </td>
+                    <td>
+                        <%=board.writer%>
+                    </td>
+                    <td>
+                        <%=board.hits%>
+                    </td>
+                    <td>
+                        <%=moment(board.writeDate).format("YYYY-MM-DD HH:mm") %>
+                    </td>
+                </tr>
+                <%})%>
+        </table>
 
-    <div class="text-end">
-        <a href="/write" class="btn btn-primary">글쓰기</a>
+        <div class="text-end">
+            <a href="/write" class="btn btn-primary">글쓰기</a>
+        </div>
+
     </div>
+
+
+
 
 
 </body>

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+global.moment = require("moment")
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
@@ -35,6 +36,18 @@ router.get("/delete/:no", async function (req, res) {
   await connection.query("delete from board where no=?", [no])
   res.redirect("/")
 })
+
+router.get("/modify/:no", async function (req, res) {
+  var [rows] = await connection.query("select * from board where no=?", [req.params.no])
+  var board = rows[0]
+  res.render("modify", { board: board })
+})
+router.post("/board/modify", async function (req, res) {
+  var query = "update board set title=?,writer=?,body=? where no=?"
+  await connection.query(query, [req.body.title, req.body.writer, req.body.body, req.body.no])
+  res.redirect("/view/" + req.body.no)
+})
+
 
 
 module.exports = router;
